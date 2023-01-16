@@ -2,6 +2,7 @@ console.log("Hello World!");
 
 let playerScore = 0;
 let computerScore = 0;
+let roundCount = 0;
 
 function getComputerChoice() {
     let computerChoice = (Math.floor(Math.random() * 100) % 3) + 1;
@@ -25,11 +26,7 @@ function playRound(playerSelection, computerSelection) {
     console.log(computerSelection);
  
     if (playerSelection === computerSelection) return 2;
-    else if (playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissors') {
-        alert(`Choose between rock, paper and scissors!`);
-        console.log("Something went wrong...");
-        return 3;
-    }
+
 
     switch (playerSelection) {
 
@@ -45,40 +42,47 @@ function playRound(playerSelection, computerSelection) {
             if (computerSelection === 'rock') return 0;
             else if (computerSelection === 'paper') return 1;
             break;
-    }    
+    }   
+    
+    if (playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissors') {
+        alert(`Choose between rock, paper and scissors!`);
+        console.log("Something went wrong...");
+        return 3;
+    } 
 }
 
 function game() {
 
+    while(roundCount < 5) {
 
-
-    for(let i = 0; i < 5; i++) {
-
-        const messageWin = `You won Round ${i}`;
-        const messageLose = `You lost Round ${i}`;
-        const messageTie = `Tie in Round ${i}`;
+        const messageWin = `You won Round ${roundCount+1}`;
+        const messageLose = `You lost Round ${roundCount+1}`;
+        const messageTie = `Tie in Round ${roundCount+1}`;
 
         let playerSelectionPrompt = prompt("What is your choice?");
         let roundResult = playRound(playerSelectionPrompt, getComputerChoice());
 
         if(roundResult != 3) {
     
-            console.log(`Round ${i}:`);
+            console.log(`Round ${roundCount+1}:`);
     
             if (roundResult === 0) {
                 computerScore += 1;
                 console.log("Computer W");
                 alert(messageLose);
+                roundCount++;
     
             } else if (roundResult === 1) {
                 playerScore += 1;
                 console.log("Player W");
                 alert(messageWin);
+                roundCount++;
     
             } else if (roundResult === 2) {
                 playerScore += 0;
                 console.log("Tie");
                 alert(messageTie);
+                roundCount++
             }
         }
     }
