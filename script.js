@@ -23,13 +23,9 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
 
     const playerChoice = playerSelection.toLowerCase();
-
-    console.log(`Player -> ${playerChoice}`);
-    console.log(`Computer -> ${computerSelection}`);
     
  
     if (playerChoice === computerSelection) return 2;
-
 
     switch (playerChoice) {
 
@@ -52,6 +48,9 @@ function playRound(playerSelection, computerSelection) {
         console.log("Something went wrong...");
         return 3;
     } 
+
+    console.log(`Player -> ${playerChoice}`);
+    console.log(`Computer -> ${computerSelection}`);
 }
 
 function game() {
@@ -74,18 +73,20 @@ function game() {
                 computerScore += 1;
                 console.log("Computer W");
                 alert(messageLose);
+
                 roundCount++;
     
             } else if (roundResult === 1) {
                 playerScore += 1;
                 console.log("Player W");
                 alert(messageWin);
+
                 roundCount++;
     
             } else if (roundResult === 2) {
-                playerScore += 0;
                 console.log("Tie");
                 alert(messageTie);
+
                 roundCount++
             }
         }
