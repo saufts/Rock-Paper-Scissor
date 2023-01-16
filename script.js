@@ -22,8 +22,8 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-    console.log(playerSelection);
-    console.log(computerSelection);
+    console.log(`Player -> ${playerSelection}`);
+    console.log(`Computer -> ${computerSelection}`);
  
     if (playerSelection === computerSelection) return 2;
 
@@ -55,17 +55,18 @@ function game() {
 
     while(roundCount < 5) {
 
-        const messageWin = `You won Round ${roundCount+1}`;
-        const messageLose = `You lost Round ${roundCount+1}`;
-        const messageTie = `Tie in Round ${roundCount+1}`;
+        const messageWin = `You won Round ${roundCount + 1}`;
+        const messageLose = `You lost Round ${roundCount + 1}`;
+        const messageTie = `Tie in Round ${roundCount + 1}`;
 
         let playerSelectionPrompt = prompt("What is your choice?");
         let roundResult = playRound(playerSelectionPrompt, getComputerChoice());
-
+        
+``
         if(roundResult != 3) {
-    
+
             console.log(`Round ${roundCount+1}:`);
-    
+
             if (roundResult === 0) {
                 computerScore += 1;
                 console.log("Computer W");
