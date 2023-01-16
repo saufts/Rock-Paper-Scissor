@@ -22,13 +22,16 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-    console.log(`Player -> ${playerSelection}`);
+    const playerChoice = playerSelection.toLowerCase();
+
+    console.log(`Player -> ${playerChoice}`);
     console.log(`Computer -> ${computerSelection}`);
+    
  
-    if (playerSelection === computerSelection) return 2;
+    if (playerChoice === computerSelection) return 2;
 
 
-    switch (playerSelection) {
+    switch (playerChoice) {
 
         case 'rock':
             if (computerSelection === 'paper') return 0;
@@ -44,7 +47,7 @@ function playRound(playerSelection, computerSelection) {
             break;
     }   
     
-    if (playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissors') {
+    if (playerChoice !== 'rock' || playerChoice !== 'paper' || playerChoice !== 'scissors') {
         alert(`Choose between rock, paper and scissors!`);
         console.log("Something went wrong...");
         return 3;
@@ -106,5 +109,3 @@ function printResults() {
 
     else console.log("It's a Tie!")
 }
-
-
