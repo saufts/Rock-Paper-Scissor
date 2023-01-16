@@ -1,5 +1,7 @@
 console.log("Hello World!");
 
+let playerScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
     let computerChoice = (Math.floor(Math.random() * 100) % 3) + 1;
@@ -19,11 +21,9 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-
     console.log(playerSelection);
     console.log(computerSelection);
  
-
     if (playerSelection === computerSelection) return 2;
     else if (playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissors') {
         alert(`Choose between rock, paper and scissors!`);
@@ -49,21 +49,19 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    
-    let playerScore = 0;
-    let computerScore = 0;
+
+
 
     for(let i = 0; i < 5; i++) {
+
+        const messageWin = `You won Round ${i}`;
+        const messageLose = `You lost Round ${i}`;
+        const messageTie = `Tie in Round ${i}`;
 
         let playerSelectionPrompt = prompt("What is your choice?");
         let roundResult = playRound(playerSelectionPrompt, getComputerChoice());
 
         if(roundResult != 3) {
-
-
-            const messageWin = `You won Round ${i}`;
-            const messageLose = `You lost Round ${i}`;
-            const messageTie = `Tie in Round ${i}`;
     
             console.log(`Round ${i}:`);
     
@@ -85,6 +83,11 @@ function game() {
         }
     }
         
+    printResults();
+
+}
+
+function printResults() {
     console.log("Final Result: ");
     if (playerScore > computerScore) {
         console.log("Player Wins!");
@@ -97,7 +100,6 @@ function game() {
     }
 
     else console.log("It's a Tie!")
-
 }
 
 
