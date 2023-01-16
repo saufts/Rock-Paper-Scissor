@@ -25,6 +25,11 @@ function playRound(playerSelection, computerSelection) {
  
 
     if (playerSelection === computerSelection) return 2;
+    else if (playerSelection !== 'rock' || playerSelection !== 'paper' || playerSelection !== 'scissors') {
+        alert(`Choose between rock, paper and scissors!`);
+        console.log("Something went wrong...");
+        return 3;
+    }
 
     switch (playerSelection) {
 
@@ -52,29 +57,34 @@ function game() {
 
         let playerSelectionPrompt = prompt("What is your choice?");
         let roundResult = playRound(playerSelectionPrompt, getComputerChoice());
-        const messageWin = `You won Round ${i}`;
-        const messageLose = `You lost Round ${i}`;
-        const messageTie = `Tie in Round ${i}`;
 
-        console.log(`Round ${i}:`);
+        if(roundResult != 3) {
 
-        if (roundResult === 0) {
-            computerScore += 1;
-            console.log("Computer W");
-            alert(messageLose);
 
-        } else if (roundResult === 1) {
-            playerScore += 1;
-            console.log("Player W");
-            alert(messageWin);
-
-        } else if (roundResult === 2) {
-            playerScore += 0;
-            console.log("Tie");
-            alert(messageTie);
+            const messageWin = `You won Round ${i}`;
+            const messageLose = `You lost Round ${i}`;
+            const messageTie = `Tie in Round ${i}`;
+    
+            console.log(`Round ${i}:`);
+    
+            if (roundResult === 0) {
+                computerScore += 1;
+                console.log("Computer W");
+                alert(messageLose);
+    
+            } else if (roundResult === 1) {
+                playerScore += 1;
+                console.log("Player W");
+                alert(messageWin);
+    
+            } else if (roundResult === 2) {
+                playerScore += 0;
+                console.log("Tie");
+                alert(messageTie);
+            }
         }
     }
-
+        
     console.log("Final Result: ");
     if (playerScore > computerScore) {
         console.log("Player Wins!");
