@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex: 1;
+    flex-direction: column;
+}
+
+.buttonStart {
+    max-width: 300px;
+    max-height: 100px;
+    align-self: center;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
+}
