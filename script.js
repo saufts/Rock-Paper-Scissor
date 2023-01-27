@@ -9,12 +9,15 @@ function getComputerChoice() {
 
     switch(computerChoice) {
         case 1:
+            alert(`vs Rock!`);
             return 'rock';
             break;
         case 2:
+            alert(`vs Paper!`);
             return 'paper';
             break;
         case 3:
+            alert(`vs Scissors!`);
             return 'scissors';
             break;
     }
@@ -64,7 +67,7 @@ function game() {
         let playerSelectionPrompt = prompt("What is your choice?");
         let roundResult = playRound(playerSelectionPrompt, getComputerChoice());
         
-``
+
         if(roundResult != 3) {
 
             console.log(`Round ${roundCount+1}:`);
@@ -93,7 +96,6 @@ function game() {
     }
         
     printResults();
-
 }
 
 function printResults() {
