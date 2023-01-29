@@ -23,7 +23,9 @@ let playerPoints = 0;
 //playerPointsPar.textContent = '';
 //computerPointsPar.textContent = '';
 
-startButton.addEventListener('click', startGame);
+startButton.addEventListener('click', function() {
+    startGame();
+});
 
 let playerChoice = '';
 
@@ -48,15 +50,21 @@ function startGame() {
     choiceButtons.appendChild(scissorsButton);
     results.appendChild(round);
 
+    computerPointsPar.textContent = 0;
+    playerPointsPar.textContent = 0;
+
     rockButton.addEventListener('click', function() {
+        playerChoice = 'rock';
         playRound('rock', getComputerChoice());
         round.textContent = `Round: ${roundCount}`;
     });
     paperButton.addEventListener('click', function() {
+        playerChoice = 'paper';
         playRound('paper', getComputerChoice())
         round.textContent = `Round: ${roundCount}`;
     });
     scissorsButton.addEventListener('click', function() {
+        playerChoice = 'scissors';
         playRound('scissors', getComputerChoice())
         round.textContent = `Round: ${roundCount}`;
     });
@@ -132,7 +140,6 @@ function playRound(playerSelection, computerSelection) {
             }
             break;
     }  
-
 }
 
 
@@ -150,12 +157,3 @@ function printResults() {
 
     else console.log("It's a Tie!")
 }
-
-
-
-
-
-
-
-
-
