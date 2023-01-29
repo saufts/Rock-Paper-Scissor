@@ -110,53 +110,54 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     
-    roundCount++; 
-    if(roundCount === 5) printResults();
-
-    if (playerChoice === computerSelection) {
-        playerPoints += 0;
-        return 3;
-    }
-
-    switch (playerChoice) {
-
-        case 'rock':
-            if (computerSelection === 'paper') {
-                computerPoints += 1;
-                computerPointsPar.textContent = `Computer: ${computerPoints}`;
-                return 1;
-            }
-            else if (computerSelection === 'scissors') {
-                playerPoints += 1;
-                playerPointsPar.textContent = `Player: ${playerPoints}`;
-                return 2;
-            }
-            break;
-        case 'paper':
-            if (computerSelection === 'rock') {
-                playerPoints += 1;
-                playerPointsPar.textContent = `Player: ${playerPoints}`;
-                return 2;
-            }
-            else if(computerSelection === 'scissors') {
-                computerPoints += 1;
-                computerPointsPar.textContent = `Computer: ${computerPoints}`;
-                return 1;
-            }
-            break;
-        case 'scissors':
-            if (computerSelection === 'rock') {
-                computerPoints += 1;
-                computerPointsPar.textContent = `Computer: ${computerPoints}`;
-                return 1;
-            }
-            else if (computerSelection === 'paper') {
-                playerPoints += 1;
-                playerPointsPar.textContent = `Player: ${playerPoints}`;
-                return 2;
-            }
-            break;
-    }  
+       
+    if(roundCount < 5) {
+        roundCount++; 
+        if (playerChoice === computerSelection) {
+            playerPoints += 0;
+            return 3;
+        }
+    
+        switch (playerChoice) {
+    
+            case 'rock':
+                if (computerSelection === 'paper') {
+                    computerPoints += 1;
+                    computerPointsPar.textContent = `Computer: ${computerPoints}`;
+                    return 1;
+                }
+                else if (computerSelection === 'scissors') {
+                    playerPoints += 1;
+                    playerPointsPar.textContent = `Player: ${playerPoints}`;
+                    return 2;
+                }
+                break;
+            case 'paper':
+                if (computerSelection === 'rock') {
+                    playerPoints += 1;
+                    playerPointsPar.textContent = `Player: ${playerPoints}`;
+                    return 2;
+                }
+                else if(computerSelection === 'scissors') {
+                    computerPoints += 1;
+                    computerPointsPar.textContent = `Computer: ${computerPoints}`;
+                    return 1;
+                }
+                break;
+            case 'scissors':
+                if (computerSelection === 'rock') {
+                    computerPoints += 1;
+                    computerPointsPar.textContent = `Computer: ${computerPoints}`;
+                    return 1;
+                }
+                else if (computerSelection === 'paper') {
+                    playerPoints += 1;
+                    playerPointsPar.textContent = `Player: ${playerPoints}`;
+                    return 2;
+                }
+                break;
+        } 
+    } else setGameOver();
 }
 
 function printResults() {
@@ -172,4 +173,11 @@ function printResults() {
     }
 
     else console.log("It's a Tie!")
+}
+
+function setGameOver() {
+
+    if(playerPoints > computerPoints) alert('You won!');
+    else if (playerPoints < computerPoints) alert('You lose!');
+    else alert('It\'s a tie!');
 }
