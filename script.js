@@ -182,11 +182,14 @@ function setGameOver() {
     computerPoints = 0;
 
 
-    computerPointsPar.textContent = `Computer: ${computerPoints}`;
-    playerPointsPar.textContent = `Player: 0`;
+    computerChoice = '';
+    playerChoice = '';
 
-    computerChoicePar.textContent = `Computer: `;
-    playerChoicePar.textContent = `Player: `;
+    computerPointsPar.textContent = `Computer: ${computerPoints}`;
+    playerPointsPar.textContent = `Player: ${playerPoints}`;
+
+    computerChoicePar.textContent = `Computer: ${computerChoice}`;
+    playerChoicePar.textContent = `Player: ${playerChoice}`;
 
 
 }
