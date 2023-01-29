@@ -17,16 +17,18 @@ const computerPointsPar = document.querySelector('.computerPointsPar');
 
 const choiceButtons = document.querySelector('.choiceButtons');
 
-const playerChoicePar = document.querySelector('.playerChoicePar');
-const computerChoicePar = document.querySelector('.computerChoicePar');
+let playerChoicePar = document.querySelector('.playerChoicePar');
+let computerChoicePar = document.querySelector('.computerChoicePar');
 
 let computerPoints = 0;
+let playerPoints = 0;
 
 startButton.addEventListener('click', function() {
     startGame();
 });
 
 let playerChoice = '';
+let computerChoice = '';
 
 
 function startGame() {
@@ -35,17 +37,25 @@ function startGame() {
 
     rockButton.addEventListener('click', function() {
         playerChoice = 'rock';
+        playerChoicePar.textContent = `Player: ${playerChoice}`;
         playRound('rock', getComputerChoice());
+        computerChoicePar.textContent = `Computer: ${computerChoice}`;
         round.textContent = `Round: ${roundCount}`;
     });
+
     paperButton.addEventListener('click', function() {
         playerChoice = 'paper';
+        playerChoicePar.textContent = `Player: ${playerChoice}`;
         playRound('paper', getComputerChoice())
+        computerChoicePar.textContent = `Computer: ${computerChoice}`;
         round.textContent = `Round: ${roundCount}`;
     });
+
     scissorsButton.addEventListener('click', function() {
         playerChoice = 'scissors';
-        playRound('scissors', getComputerChoice())
+        playerChoicePar.textContent = `Player: ${playerChoice}`;
+        playRound('scissors', getComputerChoice());
+        computerChoicePar.textContent = `Computer: ${computerChoice}`;
         round.textContent = `Round: ${roundCount}`;
     });
 }
@@ -79,27 +89,26 @@ function setStartGameLayout() {
 }
 
 function getComputerChoice() {
-    let computerChoice = (Math.floor(Math.random() * 100) % 3) + 1;
 
-    switch(computerChoice) {
+    let computerSelection = (Math.floor(Math.random() * 100) % 3) + 1;
+
+    switch(computerSelection) {
         case 1:
-            alert(`vs Rock!`);
+            computerChoice = 'rock';
             return 'rock';
             break;
         case 2:
-            alert(`vs Paper!`);
+            computerChoice = 'paper';
             return 'paper';
             break;
         case 3:
-            alert(`vs Scissors!`);
+            computerChoice = 'scissors';
             return 'scissors';
             break;
     }
 } 
 
 function playRound(playerSelection, computerSelection) {
-
-    //const playerChoice = playerSelection.toLowerCase();
     
     roundCount++; 
     if(roundCount === 5) printResults();
