@@ -10,7 +10,7 @@ h1 {
     flex-direction: column;
 }
 
-.buttonStart {
+.startButton {
     max-width: 300px;
     max-height: 100px;
     align-self: center;
@@ -19,4 +19,15 @@ h1 {
 .results {
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.playerPoints {
+    padding: 10px;
+}
+
+.computerPoints {
+    padding: 10px;
 }

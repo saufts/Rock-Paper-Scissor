@@ -4,6 +4,63 @@ let playerScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
+const messageWin = `You won Round ${roundCount + 1}`;
+const messageLose = `You lost Round ${roundCount + 1}`;
+const messageTie = `Tie in Round ${roundCount + 1}`;
+
+const startButton = document.querySelector('.startButton');
+const mainContainer = document.querySelector(".mainContainer");
+const results = document.querySelector('.results');
+
+const playerPointsPar = document.querySelector('.playerPointsPar');
+const computerPointsPar = document.querySelector('.computerPointsPar');
+
+const choiceButtons = document.querySelector('.choiceButtons');
+
+let computerPoints = 0;
+let playerPoints = 0;
+
+//playerPointsPar.textContent = '';
+//computerPointsPar.textContent = '';
+
+startButton.addEventListener('click', startGame);
+
+let playerChoice = '';
+
+
+function startGame() {
+
+    startButton.parentNode.removeChild(startButton);
+    let roundResult = 0;
+    
+    rockButton = document.createElement('button');
+    rockButton.textContent = 'ROCK';
+    paperButton = document.createElement('button');
+    paperButton.textContent = 'PAPER';
+    scissorsButton = document.createElement('button');
+    scissorsButton.textContent = 'SCISSORS';
+
+    round = document.createElement('div');
+    round.textContent = `Round: ${roundCount}`;
+
+    choiceButtons.appendChild(rockButton);
+    choiceButtons.appendChild(paperButton);
+    choiceButtons.appendChild(scissorsButton);
+    results.appendChild(round);
+
+    rockButton.addEventListener('click', function() {
+        playRound('rock', getComputerChoice());
+        round.textContent = `Round: ${roundCount}`;
+    });
+    paperButton.addEventListener('click', function() {
+        playRound('paper', getComputerChoice())
+        round.textContent = `Round: ${roundCount}`;
+    });
+    scissorsButton.addEventListener('click', function() {
+        playRound('scissors', getComputerChoice())
+        round.textContent = `Round: ${roundCount}`;
+    });
+}
 
 function getComputerChoice() {
     let computerChoice = (Math.floor(Math.random() * 100) % 3) + 1;
@@ -26,80 +83,58 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
 
-    const playerChoice = playerSelection.toLowerCase();
+    //const playerChoice = playerSelection.toLowerCase();
     
- 
-    if (playerChoice === computerSelection) return 2;
+    roundCount++; 
+    if(roundCount === 5) printResults();
+
+    if (playerChoice === computerSelection) {
+        playerPoints += 0;
+        return 3;
+    }
 
     switch (playerChoice) {
 
         case 'rock':
-            if (computerSelection === 'paper') return 0;
-            else if (computerSelection === 'scissors') return 1;
+            if (computerSelection === 'paper') {
+                computerPoints += 1;
+                computerPointsPar.textContent = `${computerPoints}`;
+                return 1;
+            }
+            else if (computerSelection === 'scissors') {
+                playerPoints += 1;
+                playerPointsPar.textContent = `${playerPoints}`;
+                return 2;
+            }
             break;
         case 'paper':
-            if (computerSelection === 'rock') return 1;
-            else if(computerSelection === 'scissors') return 0;
+            if (computerSelection === 'rock') {
+                playerPoints += 1;
+                playerPointsPar.textContent = `${playerPoints}`;
+                return 2;
+            }
+            else if(computerSelection === 'scissors') {
+                computerPoints += 1;
+                computerPointsPar.textContent = `${computerPoints}`;
+                return 1;
+            }
             break;
         case 'scissors':
-            if (computerSelection === 'rock') return 0;
-            else if (computerSelection === 'paper') return 1;
-            break;
-    }   
-    
-    if (playerChoice !== 'rock' || playerChoice !== 'paper' || playerChoice !== 'scissors') {
-        alert(`Choose between rock, paper and scissors!`);
-        console.log("Something went wrong...");
-        return 3;
-    } 
-
-    console.log(`Player -> ${playerChoice}`);
-    console.log(`Computer -> ${computerSelection}`);
-}
-
-/*
-function game() {
-
-    while(roundCount < 5) {
-
-        const messageWin = `You won Round ${roundCount + 1}`;
-        const messageLose = `You lost Round ${roundCount + 1}`;
-        const messageTie = `Tie in Round ${roundCount + 1}`;
-
-        let playerSelectionPrompt = prompt("What is your choice?");
-        let roundResult = playRound(playerSelectionPrompt, getComputerChoice());
-        
-
-        if(roundResult != 3) {
-
-            console.log(`Round ${roundCount+1}:`);
-
-            if (roundResult === 0) {
-                computerScore += 1;
-                console.log("Computer W");
-                alert(messageLose);
-
-                roundCount++;
-    
-            } else if (roundResult === 1) {
-                playerScore += 1;
-                console.log("Player W");
-                alert(messageWin);
-
-                roundCount++;
-    
-            } else if (roundResult === 2) {
-                console.log("Tie");
-                alert(messageTie);
-
-                roundCount++
+            if (computerSelection === 'rock') {
+                computerPoints += 1;
+                computerPointsPar.textContent = `${computerPoints}`;
+                return 1;
             }
-        }
-    }
-        
-    printResults();
+            else if (computerSelection === 'paper') {
+                playerPoints += 1;
+                playerPointsPar.textContent = `${playerPoints}`;
+                return 2;
+            }
+            break;
+    }  
+
 }
-*/
+
 
 function printResults() {
     console.log("Final Result: ");
@@ -119,55 +154,6 @@ function printResults() {
 
 
 
-function game() {
-
-    
- startButton.parentNode.removeChild startButton);
-
-    while(roundCount < 5) {
-
-        const messageWin = `You won Round ${roundCount + 1}`;
-        const messageLose = `You lost Round ${roundCount + 1}`;
-        const messageTie = `Tie in Round ${roundCount + 1}`;
-
-        let playerSelectionPrompt = prompt("What is your choice?");
-        let roundResult = playRound(playerSelectionPrompt, getComputerChoice());
-        
-
-        if(roundResult != 3) {
-
-            console.log(`Round ${roundCount+1}:`);
-
-            if (roundResult === 0) {
-                computerScore += 1;
-                console.log("Computer W");
-                alert(messageLose);
-
-                roundCount++;
-    
-            } else if (roundResult === 1) {
-                playerScore += 1;
-                console.log("Player W");
-                alert(messageWin);
-
-                roundCount++;
-    
-            } else if (roundResult === 2) {
-                console.log("Tie");
-                alert(messageTie);
-
-                roundCount++
-            }
-        }
-    }
-        
-    printResults();
-}
-
-const startButton = document.querySelector(' startButton');
-const mainContainer = document.querySelector(".mainContainer");
-
-if startButton) startButton.addEventListener('click', game);
 
 
 
