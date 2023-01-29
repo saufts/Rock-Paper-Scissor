@@ -17,11 +17,10 @@ const computerPointsPar = document.querySelector('.computerPointsPar');
 
 const choiceButtons = document.querySelector('.choiceButtons');
 
-let computerPoints = 0;
-let playerPoints = 0;
+const playerChoicePar = document.querySelector('.playerChoicePar');
+const computerChoicePar = document.querySelector('.computerChoicePar');
 
-//playerPointsPar.textContent = '';
-//computerPointsPar.textContent = '';
+let computerPoints = 0;
 
 startButton.addEventListener('click', function() {
     startGame();
@@ -31,6 +30,27 @@ let playerChoice = '';
 
 
 function startGame() {
+
+    setStartGameLayout();
+
+    rockButton.addEventListener('click', function() {
+        playerChoice = 'rock';
+        playRound('rock', getComputerChoice());
+        round.textContent = `Round: ${roundCount}`;
+    });
+    paperButton.addEventListener('click', function() {
+        playerChoice = 'paper';
+        playRound('paper', getComputerChoice())
+        round.textContent = `Round: ${roundCount}`;
+    });
+    scissorsButton.addEventListener('click', function() {
+        playerChoice = 'scissors';
+        playRound('scissors', getComputerChoice())
+        round.textContent = `Round: ${roundCount}`;
+    });
+}
+
+function setStartGameLayout() {
 
     startButton.parentNode.removeChild(startButton);
     let roundResult = 0;
@@ -53,21 +73,9 @@ function startGame() {
     computerPointsPar.textContent = `Computer: 0`;
     playerPointsPar.textContent = `Player: 0`;
 
-    rockButton.addEventListener('click', function() {
-        playerChoice = 'rock';
-        playRound('rock', getComputerChoice());
-        round.textContent = `Round: ${roundCount}`;
-    });
-    paperButton.addEventListener('click', function() {
-        playerChoice = 'paper';
-        playRound('paper', getComputerChoice())
-        round.textContent = `Round: ${roundCount}`;
-    });
-    scissorsButton.addEventListener('click', function() {
-        playerChoice = 'scissors';
-        playRound('scissors', getComputerChoice())
-        round.textContent = `Round: ${roundCount}`;
-    });
+    computerChoicePar.textContent = `Computer: `;
+    playerChoicePar.textContent = `Player: `;
+
 }
 
 function getComputerChoice() {
@@ -141,7 +149,6 @@ function playRound(playerSelection, computerSelection) {
             break;
     }  
 }
-
 
 function printResults() {
     console.log("Final Result: ");
