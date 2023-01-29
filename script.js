@@ -4,11 +4,7 @@ let playerScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
-const messageWin = `You won Round ${roundCount + 1}`;
-const messageLose = `You lost Round ${roundCount + 1}`;
-const messageTie = `Tie in Round ${roundCount + 1}`;
-
-const startButton = document.querySelector('.startButton');
+let startButton = document.querySelector('.startButton');
 const mainContainer = document.querySelector(".mainContainer");
 const results = document.querySelector('.results');
 
@@ -63,7 +59,6 @@ function startGame() {
 function setStartGameLayout() {
 
     startButton.parentNode.removeChild(startButton);
-    let roundResult = 0;
     
     rockButton = document.createElement('button');
     rockButton.textContent = 'ROCK';
@@ -177,7 +172,21 @@ function printResults() {
 
 function setGameOver() {
 
+    round.textContent = `Round: ${roundCount}`;
     if(playerPoints > computerPoints) alert('You won!');
     else if (playerPoints < computerPoints) alert('You lose!');
     else alert('It\'s a tie!');
+
+    roundCount = 0;
+    playerPoints = 0;
+    computerPoints = 0;
+
+
+    computerPointsPar.textContent = `Computer: ${computerPoints}`;
+    playerPointsPar.textContent = `Player: 0`;
+
+    computerChoicePar.textContent = `Computer: `;
+    playerChoicePar.textContent = `Player: `;
+
+
 }
