@@ -50,8 +50,8 @@ function startGame() {
     choiceButtons.appendChild(scissorsButton);
     results.appendChild(round);
 
-    computerPointsPar.textContent = 0;
-    playerPointsPar.textContent = 0;
+    computerPointsPar.textContent = `Computer: 0`;
+    playerPointsPar.textContent = `Player: 0`;
 
     rockButton.addEventListener('click', function() {
         playerChoice = 'rock';
@@ -106,36 +106,36 @@ function playRound(playerSelection, computerSelection) {
         case 'rock':
             if (computerSelection === 'paper') {
                 computerPoints += 1;
-                computerPointsPar.textContent = `${computerPoints}`;
+                computerPointsPar.textContent = `Computer: ${computerPoints}`;
                 return 1;
             }
             else if (computerSelection === 'scissors') {
                 playerPoints += 1;
-                playerPointsPar.textContent = `${playerPoints}`;
+                playerPointsPar.textContent = `Player: ${playerPoints}`;
                 return 2;
             }
             break;
         case 'paper':
             if (computerSelection === 'rock') {
                 playerPoints += 1;
-                playerPointsPar.textContent = `${playerPoints}`;
+                playerPointsPar.textContent = `Player: ${playerPoints}`;
                 return 2;
             }
             else if(computerSelection === 'scissors') {
                 computerPoints += 1;
-                computerPointsPar.textContent = `${computerPoints}`;
+                computerPointsPar.textContent = `Computer: ${computerPoints}`;
                 return 1;
             }
             break;
         case 'scissors':
             if (computerSelection === 'rock') {
                 computerPoints += 1;
-                computerPointsPar.textContent = `${computerPoints}`;
+                computerPointsPar.textContent = `Computer: ${computerPoints}`;
                 return 1;
             }
             else if (computerSelection === 'paper') {
                 playerPoints += 1;
-                playerPointsPar.textContent = `${playerPoints}`;
+                playerPointsPar.textContent = `Player: ${playerPoints}`;
                 return 2;
             }
             break;

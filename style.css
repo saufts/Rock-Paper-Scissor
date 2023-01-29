@@ -20,14 +20,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    margin: 10px;
+
+    gap: 15px;
 }
 
-.playerPoints {
-    padding: 10px;
-}
-
-.computerPoints {
-    padding: 10px;
-}
