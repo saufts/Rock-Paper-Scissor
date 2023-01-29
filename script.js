@@ -171,16 +171,15 @@ function printResults() {
 }
 
 function setGameOver() {
-
-    round.textContent = `Round: ${roundCount}`;
-    if(playerPoints > computerPoints) alert('You won!');
-    else if (playerPoints < computerPoints) alert('You lose!');
-    else alert('It\'s a tie!');
-
+  
     roundCount = 0;
     playerPoints = 0;
     computerPoints = 0;
+    round.textContent = `Round: ${roundCount}`;
 
+    if(playerPoints > computerPoints) alert('You won!');
+    else if (playerPoints < computerPoints) alert('You lose!');
+    else alert('It\'s a tie!');
 
     computerChoice = '';
     playerChoice = '';
@@ -190,6 +189,4 @@ function setGameOver() {
 
     computerChoicePar.textContent = `Computer: ${computerChoice}`;
     playerChoicePar.textContent = `Player: ${playerChoice}`;
-
-
 }
